@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="back">
+      <div class="container">
+        <header id="hex-grid">
+          <div class="light"></div>
+          <div class="grid"></div>
+        </header>
+      </div>
+    </div>
+
+    <!-- Parent flex container -->
+    <div class="parent-container">
+      <div class="logo-parent">
+        <div class="logo">
+          TᴏᴅᴏTAP
+          <img
+            src="./tap1.svg"
+            width="72px"
+            height="72px"
+            class="finger-tap"
+            alt="Tap Icon"
+          />
+        </div>
+        <div class="tagline">ज़िंदगी को थोड़ा SORTED बनाओ</div>
+      </div>
+
+      <div class="auth-container">
+        <!-- Sign Up Form -->
+        <div id="signup-form" class="auth-form active">
+          <h2 class="form-title">Sign Up</h2>
+          <div class="input-group">
+            <input
+              type="text"
+              placeholder="Username"
+              required
+              class="signupuser-input"
+            />
+          </div>
+          <div class="input-group">
+            <input
+              type="password"
+              placeholder="Password"
+              required
+              class="signuppass-input"
+            />
+          </div>
+          <button class="submit-btn">Create Account</button>
+          <div class="toggle-form">
+            Already have an account? <a onclick="showForm('signin')">Sign In</a>
+          </div>
+        </div>
+
+        <div id="signin-form" class="auth-form">
+          <h2 class="form-title">Sign In</h2>
+          <div class="input-group">
+            <input
+              type="text"
+              placeholder="Username"
+              class="loginuser-input"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <input
+              type="password"
+              placeholder="Password"
+              class="loginpass-input"
+              required
+            />
+          </div>
+          <button class="submit-btn">Login</button>
+          <div class="toggle-form">
+            Don't have an account? <a onclick="showForm('signup')">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
