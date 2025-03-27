@@ -218,7 +218,8 @@ body {
   border-color: #2ae9c9;
   background: rgba(255, 255, 255, 0.15);
 }
-.submit-btn {
+.submit-btn1,
+.submit-btn2 {
   width: 100%;
   padding: 0.9rem;
   border: none;
@@ -305,4 +306,10 @@ body {
   .tagline {
     font-size: 3rem;
   }
+}
+
+.error-text {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
 }

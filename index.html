@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>TodoTAP</title>
     <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="back">
@@ -39,44 +40,53 @@
           <div class="input-group">
             <input
               type="text"
+              id="signup-username"
               placeholder="Username"
               required
               class="signupuser-input"
             />
+            <p class="error-text" id="signup-username-error"></p>
           </div>
           <div class="input-group">
             <input
               type="password"
+              id="signup-password"
               placeholder="Password"
               required
               class="signuppass-input"
             />
+            <p class="error-text" id="signup-password-error"></p>
           </div>
-          <button class="submit-btn">Create Account</button>
+          <button class="submit-btn2">Create Account</button>
           <div class="toggle-form">
             Already have an account? <a onclick="showForm('signin')">Sign In</a>
           </div>
         </div>
 
+        <!-- Sign In Form -->
         <div id="signin-form" class="auth-form active">
           <h2 class="form-title">Sign In</h2>
           <div class="input-group">
             <input
               type="text"
+              id="login-username"
               placeholder="Username"
-              class="loginuser-input"
               required
+              class="loginuser-input"
             />
+            <p class="error-text" id="login-username-error"></p>
           </div>
           <div class="input-group">
             <input
               type="password"
+              id="login-password"
               placeholder="Password"
-              class="loginpass-input"
               required
+              class="loginpass-input"
             />
+            <p class="error-text" id="login-password-error"></p>
           </div>
-          <button class="submit-btn">Login</button>
+          <button class="submit-btn1">Login</button>
           <div class="toggle-form">
             Don't have an account? <a onclick="showForm('signup')">Sign Up</a>
           </div>
