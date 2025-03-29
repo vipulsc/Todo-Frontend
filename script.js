@@ -2,23 +2,25 @@
 const light = document.querySelector(".light");
 const grid = document.querySelector("#hex-grid");
 
-// ✅ Move Light Effect
+// ✅ Move Light Effect (Smooth Performance)
 function moveLight(x, y) {
-  light.style.left = `${x}px`;
-  light.style.top = `${y}px`;
+  requestAnimationFrame(() => {
+    light.style.left = `${x}px`;
+    light.style.top = `${y}px`;
+  });
 }
 
-// Mouse movement
+// ✅ Mouse movement
 grid.addEventListener("mousemove", (e) => moveLight(e.clientX, e.clientY));
 
-// Touch movement
+// ✅ Touch movement (Prevents Lag)
 grid.addEventListener("touchmove", (e) => {
   e.preventDefault();
   const touch = e.touches[0];
   moveLight(touch.clientX, touch.clientY);
 });
 
-// Handle window resize
+// ✅ Handle window resize
 window.addEventListener("resize", () => {
   light.style.left = "50%";
   light.style.top = "50%";
@@ -37,15 +39,15 @@ function showForm(formType) {
   document.getElementById(`${formType}-form`).classList.add("active");
 }
 
-// ✅ Form Validation Function
+// ✅ General Input Validation
 function validateInput(inputElement, errorElement) {
-  const value = inputElement.value;
+  const value = inputElement.value.trim();
 
   if (value.includes(" ")) {
     errorElement.textContent = "❌ No spaces allowed!";
     return false;
   }
-  if (value.trim() === "") {
+  if (value === "") {
     errorElement.textContent = "⚠️ This field cannot be empty!";
     return false;
   }
@@ -54,12 +56,31 @@ function validateInput(inputElement, errorElement) {
   return true;
 }
 
+// ✅ Password Validation Function
+function validatePassword(password, errorElement) {
+  const passwordCriteria =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+  if (!passwordCriteria.test(password)) {
+    errorElement.textContent =
+      "❌ Password must be at least 8 characters long with 1 uppercase, 1 lowercase, 1 number, and 1 special character.";
+    return false;
+  }
+  errorElement.textContent = "";
+  return true;
+}
+
 // ✅ Real-time Validation
 document.querySelectorAll(".input-group input").forEach((input) => {
   input.addEventListener("input", function () {
-    const errorId = this.id + "-error"; // Get corresponding error ID
+    const errorId = this.id + "-error";
     const errorElement = document.getElementById(errorId);
-    if (errorElement) validateInput(this, errorElement);
+
+    if (this.type === "password") {
+      validatePassword(this.value, errorElement);
+    } else {
+      validateInput(this, errorElement);
+    }
   });
 });
 
@@ -72,6 +93,9 @@ const loginPass = document.getElementById("login-password");
 const signupBtn = document.querySelector(".submit-btn2");
 const loginBtn = document.querySelector(".submit-btn1");
 
+const errorFieldS = document.querySelector(".server-error");
+const errorFieldL = document.querySelector(".server-errorL");
+
 // ✅ Validation Check Functions
 function isValidSignup() {
   return (
@@ -79,7 +103,10 @@ function isValidSignup() {
       signupUser,
       document.getElementById("signup-username-error")
     ) &&
-    validateInput(signupPass, document.getElementById("signup-password-error"))
+    validatePassword(
+      signupPass.value,
+      document.getElementById("signup-password-error")
+    )
   );
 }
 
@@ -93,7 +120,10 @@ function isValidLogin() {
 // ✅ Backend Call: Signup
 async function signup() {
   if (!isValidSignup()) {
-    alert("⚠️ Please fix errors before signing up!");
+    errorFieldS.textContent = "⚠️ Please fix errors before signing up!";
+    setTimeout(() => {
+      errorFieldS.textContent = "";
+    }, 5000);
     return;
   }
 
@@ -105,16 +135,37 @@ async function signup() {
       username: user,
       password: pass,
     });
-    console.log(response.data);
+    errorFieldS.textContent = "✅ Signup successful! Please log in.";
+    setTimeout(() => {
+      errorFieldS.textContent = "";
+    }, 5000);
+    showForm("signin");
   } catch (error) {
-    console.error("Signup failed:", error.response?.data || error.message);
+    let errorMessage;
+    try {
+      errorMessage =
+        typeof error.response?.data === "string"
+          ? error.response.data
+          : JSON.stringify(error.response?.data);
+    } catch {
+      errorMessage = error.message || "Something went wrong";
+    }
+    errorFieldS.textContent = errorMessage;
+
+    setTimeout(() => {
+      errorFieldS.textContent = "";
+    }, 5000);
   }
 }
 
 // ✅ Backend Call: Login
 async function login() {
   if (!isValidLogin()) {
-    alert("⚠️ Please fix errors before logging in!");
+    errorFieldL.textContent = "⚠️ Please fix errors before logging in!";
+
+    setTimeout(() => {
+      errorFieldL.textContent = "";
+    }, 5000);
     return;
   }
 
@@ -126,17 +177,34 @@ async function login() {
       username: user,
       password: pass,
     });
+
     console.log(response.data);
-    location.href = "./homepage.html";
+    location.href = "./homepage.html"; // Redirect on success
   } catch (error) {
-    console.error("Login failed:", error.response?.data || error.message);
+    let errorMessage;
+    try {
+      errorMessage =
+        typeof error.response?.data?.error === "string"
+          ? error.response.data.error
+          : JSON.stringify(error.response?.data?.error);
+    } catch {
+      errorMessage = error.message || "Something went wrong";
+    }
+    errorFieldL.textContent = errorMessage;
+
+    setTimeout(() => {
+      errorFieldL.textContent = "";
+    }, 5000);
   }
 }
 
 // ✅ Event Listeners for Signup & Login
-signupBtn.addEventListener("click", () => {
+signupBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   signup();
 });
-loginBtn.addEventListener("click", () => {
+
+loginBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   login();
 });
