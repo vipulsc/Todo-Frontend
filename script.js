@@ -177,8 +177,9 @@ async function login() {
       username: user,
       password: pass,
     });
+    const token = response.data.token;
+    localStorage.setItem("authToken", token);
 
-    console.log(response.data);
     location.href = "./homepage.html"; // Redirect on success
   } catch (error) {
     let errorMessage;

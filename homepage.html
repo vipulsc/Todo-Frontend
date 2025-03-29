@@ -4,9 +4,52 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
   <body>
-    <p>LOGIN DONE</p>
+    <nav class="navbar">
+      <p class="logo-home">TodoTAP</p>
+      <div class="right">
+        Welcome,
+        <p class="username"></p>
+        !
+        <button class="logout">Logout</button>
+      </div>
+    </nav>
+
+    <div class="modifyTask">
+      <section class="task-input-section">
+        <h2 class="section-title">Add New Task</h2>
+        <form id="add-task-form" class="task-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="task">Task Description</label>
+              <input
+                type="text"
+                id="task"
+                placeholder="What needs to be done?"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="due">Due Date</label>
+              <input type="date" id="due" required />
+            </div>
+          </div>
+          <button type="submit" class="add-btn">Add Task</button>
+        </form>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <a>Vipl</a>
+      <a>Vipl</a>
+      <a>Vipl</a>
+    </footer>
+
     <script src="./script.js"></script>
+    <script type="module" src="./script2.js"></script>
   </body>
 </html>

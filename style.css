@@ -1,0 +1,206 @@
+:root {
+  --primary-color: #0a1828; /* Dark classic blue */
+  --accent-color: #bfa181; /* Gold accent */
+  --button-color: #178582; /* Turquoise button */
+  --button-hover: #0e5c5a; /* Darker turquoise */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Original gradient replaced with new color scheme */
+  background-color: var(--primary-color);
+  background-attachment: fixed;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%; /* Responsive width */
+  max-width: 1200px;
+  background: rgba(10, 24, 40, 0.9);
+  color: white;
+  padding: 5px 20px;
+  border-radius: 15px;
+  box-shadow: -4px -4px 6px var(--accent-color);
+  border: 2px solid rgba(191, 161, 129, 0.3);
+}
+
+.logo-home {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logout {
+  background-color: var(--button-color);
+  color: white;
+  border: 2px solid var(--accent-color);
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.logout:hover {
+  background-color: var(--button-hover);
+}
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  background: rgba(10, 24, 40, 0.9);
+  color: var(--accent-color);
+  padding: 15px 20px;
+  border-top: 2px solid rgba(191, 161, 129, 0.3);
+}
+
+.modifyTask {
+  position: fixed;
+  transform: perspective(800px) rotateX(0deg) rotateY(0deg) translateY(-60%);
+  border: 0.5px solid var(--accent-color);
+  margin-top: 20vh;
+  width: 95%;
+  padding: 20px;
+  background: #1e2a38;
+  border-radius: 10px;
+  min-height: 25vh;
+  /* Deep 3D shadow */
+  box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.5),
+    -5px -5px 15px rgba(255, 255, 255, 0.1) inset;
+
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.task-input-section {
+  transform: perspective(100px) rotateX(0deg) rotateY(0deg) translateY(-1%);
+  box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.5),
+    -5px -5px 15px rgba(255, 255, 255, 0.1) inset;
+  background-color: #19232f;
+  min-height: 25vh;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.section-title {
+  margin-bottom: 16px;
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 250px;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: white;
+}
+
+.form-group input {
+  background-color: #b0bec5d6;
+}
+
+.form-group input,
+.form-group select {
+  margin-top: 10px;
+  width: 90%;
+  padding: 8px 12px;
+  border: 2px solid var(--accent-color);
+  font-size: 16px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.add-btn {
+  background-color: var(--button-color);
+  color: white;
+  border: 2px solid var(--accent-color);
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .modifyTask {
+    width: 90%;
+    margin-top: 200px;
+  }
+}
+
+@media (max-width: 616px) {
+  .modifyTask {
+    margin-top: 400px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+  .modifyTask {
+    width: 95%;
+    margin-top: 15vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .modifyTask {
+    margin-top: 30vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .modifyTask {
+    margin-top: 35vh;
+    padding: 15px;
+  }
+  .navbar {
+    padding: 8px 15px;
+  }
+  .footer {
+    padding: 10px;
+  }
+}
