@@ -167,13 +167,14 @@ function renderTasks(tasks) {
 		</div>
 		<span class="task-status ${task.status.toLowerCase()}">${task.status}</span>
 		<div class="task-actions">
-		  <button class="edit-btn" data-id="${task._id}">
-			<i class="fas fa-edit"></i> Edit
-		  </button>
-		  <button class="delete-btn" data-id="${task._id}">
-			<i class="fas fa-trash-alt"></i> Delete
-		  </button>
-		</div>
+      <button class="edit-btn" data-id="${task._id}" title="Edit">
+        <i class="fas fa-pencil-alt"></i>
+      </button>
+      <button class="delete-btn" data-id="${task._id}" title="Delete">
+        <i class="fas fa-trash"></i>
+      </button>
+    </div>
+
 	  `;
 
     tasksContainer.appendChild(taskElement);
