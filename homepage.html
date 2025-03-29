@@ -8,6 +8,11 @@
   </head>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+
   <body>
     <nav class="navbar">
       <p class="logo-home">TodoTAP</p>
@@ -18,31 +23,61 @@
         <button class="logout">Logout</button>
       </div>
     </nav>
-
-    <div class="modifyTask">
-      <section class="task-input-section">
-        <h2 class="section-title">Add New Task</h2>
-        <form id="add-task-form" class="task-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="task">Task Description</label>
-              <input
-                type="text"
-                id="task"
-                placeholder="What needs to be done?"
-                required
-              />
+    <div class="mvp">
+      <div class="modifyTask">
+        <section class="task-input-section">
+          <h2 class="section-title">Add New Task</h2>
+          <form id="add-task-form" class="task-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="task">Task Description</label>
+                <input
+                  type="text"
+                  id="task-input"
+                  placeholder="What needs to be done?"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="due">Due Date</label>
+                <input type="date" id="due-input" required />
+              </div>
             </div>
-            <div class="form-group">
-              <label for="due">Due Date</label>
-              <input type="date" id="due" required />
+            <button type="submit" class="add-btn">Add Task</button>
+          </form>
+        </section>
+      </div>
+      <div class="show-task">
+        <section class="task-list-section">
+          <div class="task-list-header">
+            <h2 class="section-title">Your Tasks</h2>
+            <div class="filters">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="pending">Pending</button>
+              <button class="filter-btn" data-filter="completed">
+                Completed
+              </button>
+            </div>
+            <div id="tasks-container">
+              <div class="loading">
+                <i class="fas fa-spinner"></i>
+                <div class="alltasks">
+                  <div id="tasks-container" class="task-list">
+                    <!-- Tasks will be dynamically inserted here -->
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <button type="submit" class="add-btn">Add Task</button>
-        </form>
-      </section>
+        </section>
+      </div>
     </div>
-
+    <a href="https://github.com/vipulsc" class="github-corner" target="_blank">
+      <img
+        src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+        alt="GitHub"
+      />
+    </a>
     <footer class="footer">
       <a>Vipl</a>
       <a>Vipl</a>
