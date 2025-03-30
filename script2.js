@@ -42,8 +42,7 @@ function init() {
 function checkAuth() {
   const token = localStorage.getItem("authToken");
   if (!token) {
-    alert("Please log in first!");
-    location.href = "./signin.html";
+    window.location.href = "./signin.html";
   }
 }
 
