@@ -78,6 +78,11 @@ async function addTask() {
     return;
   }
 
+  if (!due) {
+    alert("Please enter a due date");
+    return;
+  }
+
   try {
     const response = await axios.post(
       "https://todotap.onrender.com/task/newTask",
