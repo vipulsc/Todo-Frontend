@@ -414,6 +414,7 @@ body {
   box-shadow: 10px 15px 20px var(--shadow-color),
     -5px -5px 15px var(--inner-shadow) inset;
   border: 2px solid var(--accent-color);
+  color: var(--text-color);
 }
 
 .save-btn {
