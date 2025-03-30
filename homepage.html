@@ -13,13 +13,16 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
   />
 
-  <body>
+  <body data-theme="dark">
     <nav class="navbar">
       <p class="logo-home">TodoTAP</p>
       <div class="right">
         Welcome,
         <p class="username"></p>
-        !
+        <button class="theme-toggle" id="theme-toggle">
+          <span class="theme-icon">🌙</span>
+          <span class="toggle-text" style="display: none">Light Mode</span>
+        </button>
         <button class="logout">Logout</button>
       </div>
     </nav>
@@ -79,11 +82,54 @@
       />
     </a>
     <footer class="footer">
-      <a>Vipl</a>
-      <a>Vipl</a>
-      <a>Vipl</a>
+      <div class="footer-content">
+        <div class="footer-links">
+          <a
+            href="https://github.in.vipulsc"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-link"
+          >
+            <i class="fab fa-github"></i> GitHub Repository
+          </a>
+          <a href="mailto:vipulsingh.1404@gmail.com" class="footer-link">
+            <i class="fas fa-envelope"></i> Contact Me
+          </a>
+        </div>
+        <div class="footer-cta">
+          <i class="fas fa-star"></i> Love this project? Star it on GitHub!
+        </div>
+      </div>
     </footer>
-
+    <div id="edit-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Edit Task</h2>
+        <form id="edit-task-form" class="task-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="edit-task">Task Description</label>
+              <input
+                type="text"
+                id="edit-task-input"
+                placeholder="Update task description"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="edit-status">Status</label>
+              <br />
+              <select id="edit-status-input" required>
+                <option value="Pending">Pending</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+          </div>
+          <input type="hidden" id="edit-task-id" />
+          <button type="submit" class="save-btn">Save Changes</button>
+        </form>
+      </div>
+    </div>
     <script src="./script.js"></script>
     <script type="module" src="./script2.js"></script>
   </body>
