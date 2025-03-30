@@ -180,7 +180,7 @@ async function login() {
     const token = response.data.token;
     localStorage.setItem("authToken", token);
 
-    location.href = "./homepage.html"; // Redirect on success
+    location.href = "./index.html"; // Redirect on success
   } catch (error) {
     let errorMessage;
     try {

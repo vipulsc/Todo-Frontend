@@ -43,7 +43,7 @@ function checkAuth() {
   const token = localStorage.getItem("authToken");
   if (!token) {
     alert("Please log in first!");
-    location.href = "./index.html";
+    location.href = "./signin.html";
   }
 }
 
@@ -65,7 +65,7 @@ async function displayUsername() {
 
 logoutBtn.addEventListener("click", () => {
   localStorage.removeItem("authToken");
-  location.href = "./index.html";
+  location.href = "./signin.html";
 });
 
 async function addTask() {

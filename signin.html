@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoTAP</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="back">
+      <div class="container">
+        <header id="hex-grid">
+          <div class="light"></div>
+          <div class="grid"></div>
+        </header>
+      </div>
+    </div>
+
+    <!-- Parent flex container -->
+    <div class="parent-container">
+      <div class="logo-parent">
+        <div class="logo">
+          TᴏᴅᴏTAP
+          <img
+            src="./tap1.svg"
+            width="72px"
+            height="72px"
+            class="finger-tap"
+            alt="Tap Icon"
+          />
+        </div>
+        <div class="tagline">ज़िंदगी को थोड़ा SORTED बनाओ</div>
+      </div>
+
+      <div class="auth-container">
+        <!-- Sign Up Form -->
+        <div id="signup-form" class="auth-form">
+          <h2 class="form-title">Sign Up</h2>
+          <div class="input-group">
+            <input
+              type="text"
+              id="signup-username"
+              placeholder="Username"
+              required
+              class="signupuser-input"
+            />
+            <p class="error-text" id="signup-username-error"></p>
+          </div>
+          <div class="input-group">
+            <input
+              type="password"
+              id="signup-password"
+              placeholder="Password"
+              required
+              class="signuppass-input"
+            />
+            <p class="error-text" id="signup-password-error"></p>
+          </div>
+          <p class="server-error"></p>
+          <button class="submit-btn2">Create Account</button>
+          <div class="toggle-form">
+            Already have an account? <a onclick="showForm('signin')">Sign In</a>
+          </div>
+        </div>
+
+        <!-- Sign In Form -->
+        <div id="signin-form" class="auth-form active">
+          <h2 class="form-title">Sign In</h2>
+          <div class="input-group">
+            <input
+              type="text"
+              id="login-username"
+              placeholder="Username"
+              required
+              class="loginuser-input"
+            />
+            <p class="error-text" id="login-username-error"></p>
+          </div>
+          <div class="input-group">
+            <input
+              type="password"
+              id="login-password"
+              placeholder="Password"
+              required
+              class="loginpass-input"
+            />
+            <p class="error-text" id="login-password-error"></p>
+          </div>
+          <p class="server-errorL"></p>
+          <button class="submit-btn1">Login</button>
+          <div class="toggle-form">
+            Don't have an account? <a onclick="showForm('signup')">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
